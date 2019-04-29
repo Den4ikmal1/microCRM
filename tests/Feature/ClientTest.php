@@ -45,8 +45,8 @@ class ClientTest extends TestCase
             'first_name' => 'FirstName',
             'last_name' => 'LastName',
             'email' => 'admin@example211.com',
-            'password' => bcrypt('secret'),
-            'password_confirmation' => bcrypt('secret')
+            'password' => 'secret',
+            'password_confirmation' =>'secret'
         ];
 
         $response = $this->post('/api/v1/clients/', $payload);
