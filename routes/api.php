@@ -14,7 +14,10 @@ use Illuminate\Http\Request;
 */
 
 Route::prefix('v1')->group(function () {
+
     Route::middleware('auth:api')->group(function () {
         Route::apiResource('/clients', 'Api\V1\ClientController');
+        Route::apiResource('/projects', 'Api\V1\ProjectController');
     });
+
 });
