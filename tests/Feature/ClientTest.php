@@ -92,4 +92,14 @@ class ClientTest extends TestCase
                 ]
             ]);
     }
+
+    public function testClientDelete()
+    {
+        $client = factory(Client::class)->create();
+        Passport::actingAs($client,
+            ['*']
+        );
+        $response = $this->delete('/api/v1/clients/'. $client->id);
+        $response->assertStatus(204);
+    }
 }

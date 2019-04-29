@@ -42,7 +42,7 @@ class ClientController extends Controller
         return $client;
     }
 
-    public function delete(Client $client)
+    public function destroy(Client $client)
     {
         if($client->delete())
             return response()->json([], 204);
