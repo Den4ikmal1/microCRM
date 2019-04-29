@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Passport\HasApiTokens;
 
 class Client extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens, Notifiable;
 
+    const DEFAULT_EMAIL = 'example@example.com';
     /**
      * The attributes that are mass assignable.
      *
