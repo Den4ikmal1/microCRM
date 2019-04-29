@@ -29,7 +29,8 @@ class ClientUpdateRequest extends FormRequest
         $validates = [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('clients')->ignore($this->client)]
+            'email' => ['required', 'string', 'email', 'max:255',
+                Rule::unique('clients')->ignore($this->client)]
         ];
         return array_merge($this->setValidationForPassword(), $validates);
     }
@@ -39,12 +40,12 @@ class ClientUpdateRequest extends FormRequest
         if ($this->password) {
             return [
                 'password' => 'required|min:6',
-                'passwordConfirmation' => 'required_with:password|same:password'
+                'password_confirmation' => 'required_with:password|same:password'
             ];
         } else {
             return [
                 'password' => 'nullable',
-                'passwordConfirmation' => 'nullable'
+                'password_confirmation' => 'nullable'
             ];
         }
     }

@@ -23,3 +23,6 @@ php artisan db:seed
 
 ## start php web server
 php artisan serve
+
+## run tests
+vendor/bin/phpunit

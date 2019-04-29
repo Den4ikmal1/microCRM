@@ -8,29 +8,24 @@ use Tests\TestCase;
 
 class ClientTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testClientIndex()
+    public function setUp(): void
     {
+        parent::setUp();
         Passport::actingAs(
             factory(Client::class)->create(),
             ['*']
         );
+    }
 
+    public function testClientIndex()
+    {
         $response = $this->get('/api/v1/clients');
         $response->assertStatus(200);
     }
 
     public function testClientShow()
     {
-        $client = Passport::actingAs(
-            factory(Client::class)->create(),
-            ['*']
-        );
-
+        $client = factory(Client::class)->create();
         $response = $this->get('/api/v1/clients/' . $client->id);
         $response
             ->assertStatus(200)
@@ -46,11 +41,6 @@ class ClientTest extends TestCase
 
     public function testClientStore()
     {
-        Passport::actingAs(
-            factory(Client::class)->create(),
-            ['*']
-        );
-
         $payload = [
             'first_name' => 'FirstName',
             'last_name' => 'LastName',
@@ -73,10 +63,7 @@ class ClientTest extends TestCase
 
     public function testClientUpdate()
     {
-        $client = Passport::actingAs(
-            factory(Client::class)->create(),
-            ['*']
-        );
+        $client = factory(Client::class)->create();
         $newData = [
             'first_name' => 'Daniel',
             'last_name' => $client->last_name,
@@ -96,9 +83,6 @@ class ClientTest extends TestCase
     public function testClientDelete()
     {
         $client = factory(Client::class)->create();
-        Passport::actingAs($client,
-            ['*']
-        );
         $response = $this->delete('/api/v1/clients/'. $client->id);
         $response->assertStatus(204);
     }
