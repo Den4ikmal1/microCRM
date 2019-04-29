@@ -5,7 +5,6 @@ namespace App\Http\Requests\Clients;
 
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
 class ClientUpdateRequest extends FormRequest

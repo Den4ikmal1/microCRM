@@ -15,7 +15,7 @@ class ClientController extends Controller
 {
     public function index()
     {
-        return Client::all();
+        return Client::paginate();
     }
 
     public function show(Client $client)
